@@ -1,0 +1,17 @@
+{
+  "name": "LINAKA INNOVATIONS",
+  "short_name": "LINAKA",
+  "description": "Enterprise software and web solutions built for the world.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1B4332",
+  "theme_color": "#C5A059",
+  "icons": [
+    {
+      "src": "assets/icons/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
