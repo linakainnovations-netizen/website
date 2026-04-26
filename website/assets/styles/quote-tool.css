@@ -1,0 +1,78 @@
+/* D:\linaka_innovations\website\assets\styles\quote-tool.css */
+
+.quote-container {
+  max-width: 900px; 
+  margin: 0 auto; 
+  background: var(--color-white);
+  padding: 3rem; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.form-group { 
+  margin-bottom: 0.5rem; 
+}
+
+.form-group label { 
+  display: block; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+}
+
+.form-control { 
+  width: 100%; 
+  padding: 0.85rem; 
+  border: 1px solid #d1d5db; 
+  border-radius: 4px; 
+  font-family: inherit; 
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus { 
+  outline: none; 
+  border-color: var(--color-gold); 
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15); 
+}
+
+.quote-item-row { 
+  display: flex; 
+  gap: 1rem; 
+  margin-bottom: 1rem; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  background: #fff;
+}
+
+.item-line-total {
+  font-size: 1.1rem;
+  color: var(--color-charcoal);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .quote-container {
+    padding: 1.5rem;
+  }
+  
+  .quote-item-row { 
+    flex-direction: column; 
+    gap: 0.75rem;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    align-items: stretch;
+  }
+  
+  .quote-item-row > div { 
+    width: 100%; 
+    flex: none !important;
+  }
+  
+  .quote-item-row .item-line-total {
+    margin-bottom: 0.5rem;
+  }
+}
