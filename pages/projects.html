@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | LINAKA INNOVATIONS</title>
+  <link rel="stylesheet" href="../website/assets/styles/global.css">
+  <link rel="stylesheet" href="../website/assets/styles/projects.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="../index.html" class="logo">
+        <img src="../website/assets/icons/logo.png" alt="LINAKA INNOVATIONS Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span style="display:none; font-size: 1.5rem; font-weight: bold; color: var(--color-green);">LINAKA INNOVATIONS</span>
+      </a>
+      <button class="menu-toggle" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="quote-tool.html" class="btn btn-outline" style="padding: 0.5rem 1rem;">Quote Tool</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title" style="color: var(--color-gold);">Our Portfolio</h1>
+        <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Explore some of the high-impact software solutions we've built to empower businesses and streamline operations.</p>
+        
+        <div class="grid">
+          <div class="card project-card">
+            <div class="project-img" style="padding: 0; background: transparent;">
+              <img src="../website/assets/images/Screenshot (495).png" alt="EduSky Screenshot" style="width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+            </div>
+            <div class="project-content">
+              <h3>Inkweti PWA project</h3>
+              <p>A comprehensive Progressive Web App providing streamlined services, robust user management, and seamless offline accessibility.</p>
+              <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; margin-top: 1rem; font-size: 0.9rem;">View Demo</a>
+            </div>
+          </div>
+          <div class="card project-card">
+            <div class="project-img" style="padding: 0; background: transparent;">
+              <img src="../website/assets/images/Screenshot (574).png" alt="Milo Stay Screenshot" style="width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+            </div>
+            <div class="project-content">
+              <h3>Church Management System</h3>
+              <p>A robust church management platform featuring member directories, integrated communication, and secure request portals.</p>
+              <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; margin-top: 1rem; font-size: 0.9rem;">View Demo</a>
+            </div>
+          </div>
+          <div class="card project-card">
+            <div class="project-img" style="padding: 0; background: transparent;">
+              <img src="../website/assets/images/Screenshot (580).png" alt="Invoicing System Screenshot" style="width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+            </div>
+            <div class="project-content">
+              <h3>Apa Ili So Website</h3>
+              <p>A dynamic and engaging platform designed to elevate the brand's digital presence and streamline user interaction.</p>
+              <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; margin-top: 1rem; font-size: 0.9rem;">View Demo</a>
+            </div>
+          </div>
+          <div class="card project-card">
+            <div class="project-img" style="padding: 0; background: transparent;">
+              <img src="../website/assets/images/Screenshot (643).png" alt="Telemedicine PWA Screenshot" style="width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;">
+            </div>
+            <div class="project-content">
+              <h3>Telemedicine PWA</h3>
+              <p>A progressive web app providing a reliable and secure platform for parents to consult with doctors remotely.</p>
+              <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; margin-top: 1rem; font-size: 0.9rem;">View Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+<footer style="position: relative; overflow: hidden; padding: 80px 0 30px; color: #fff; margin-top: 4rem;">
+  <video autoplay loop muted playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translateX(-50%) translateY(-50%); object-fit: cover; z-index: 0; opacity: 0.5;">
+    <source src="../website/assets/video/6015791_Business_Office_3840x2160.mp4" type="video/mp4">
+  </video>
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(27, 67, 50, 0.95) 0%, rgba(19, 48, 36, 0.85) 100%); z-index: 1;"></div>
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+      
+      <div>
+        <h3 style="color: var(--color-gold, #C5A059); margin-bottom: 1rem; font-size: 1.5rem;">LINAKA INNOVATIONS</h3>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
+          Custom web & software solutions.<br>Rooted in Zambia. Built for the world.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <a href="https://wa.me/260979400243" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; transition: all 0.3s; color: #fff; text-decoration: none;" onmouseover="this.style.background='var(--color-gold)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">💬</a>
+          <a href="mailto:linakainnovations@gmail.com" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; transition: all 0.3s; color: #fff; text-decoration: none;" onmouseover="this.style.background='var(--color-gold)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">✉️</a>
+          <a href="https://github.com/" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; transition: all 0.3s; color: #fff; text-decoration: none;" onmouseover="this.style.background='var(--color-gold)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">💻</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h4>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+          <li><a href="../index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Home</a></li>
+          <li><a href="about.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About</a></li>
+          <li><a href="services.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Services</a></li>
+          <li><a href="projects.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Projects</a></li>
+          <li><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.2rem;">Our Location</h4>
+        <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123164.7179040994!2d28.19632822184918!3d-15.416805820359873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1940f35db6fcebfd%3A0xeab50d4fc8b9fdf6!2sLusaka%2C%20Zambia!5e0!3m2!1sen!2sus!4v1714151240212!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+    
+    <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; font-size: 0.95rem; color: rgba(255,255,255,0.7);">
+      <p>&copy; 2026 LINAKA INNOVATIONS. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="../website/assets/scripts/global.js"></script>
+  <script src="../website/assets/scripts/projects.js"></script>
+</body>
+</html>
