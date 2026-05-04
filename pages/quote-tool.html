@@ -166,6 +166,15 @@ table.print-table th { background: #1B4332; color: #fff; }
           <input type="date" id="inValidUntil" onchange="saveAndPreview()">
         </div>
       </div>
+
+      <label>Currency</label>
+      <select id="inCurrency" onchange="saveAndPreview()">
+        <option value="ZMW">ZMW (Zambian Kwacha)</option>
+        <option value="USD">USD (US Dollar)</option>
+        <option value="GBP">GBP (British Pound)</option>
+        <option value="EUR">EUR (Euro)</option>
+        <option value="ZAR">ZAR (South African Rand)</option>
+      </select>
       
       <div style="display: flex; gap: 1rem;">
         <div style="flex: 1;">
@@ -179,6 +188,11 @@ table.print-table th { background: #1B4332; color: #fff; }
       </div>
       <label style="margin-top: 1rem;">Payment Terms &amp; Notes</label>
       <textarea id="inPaymentTerms" rows="3" style="width: 100%; padding: 0.65rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1rem;" placeholder="E.g. 50% upfront, 50% upon completion" oninput="saveAndPreview()"></textarea>
+
+      <label>Bank Name</label>
+      <input type="text" id="inBankName" placeholder="E.g. FNB Zambia" oninput="saveAndPreview()">
+      <label>Bank Account Number</label>
+      <input type="text" id="inBankAccount" placeholder="E.g. 0104317582200" oninput="saveAndPreview()">
 
       <label style="margin-top: 0.5rem;">Project Description / Scope of Work</label>
       <textarea id="inDescription" rows="4" style="width: 100%; padding: 0.65rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1rem;" placeholder="Describe what is included in this quote — e.g. Website with 5 pages, admin dashboard, mobile responsive, 3 months support..." oninput="saveAndPreview()"></textarea>
@@ -222,11 +236,13 @@ table.print-table th { background: #1B4332; color: #fff; }
             <div id="outQuoteNum" style="font-weight: bold; color: #555; font-size: 1.1rem; margin-top: 5px;"></div>
           </div>
           <div class="print-company">
-            <strong style="font-size: 1.4rem; color: #1B4332;">LINAKA INNOVATIONS</strong><br><br>
+            <strong style="font-size: 1.4rem; color: #1B4332;">LINAKA INNOVATIONS</strong><br>
+            <span style="font-size: 0.8rem;">(trading as Denfas Simfukwe)</span><br><br>
+            TPIN: 2002984908<br>
             Call: 0953526534<br>
             WhatsApp: 0979400243<br>
             Email: linakainnovations@gmail.com<br>
-            <strong style="color: #1B4332;">Bank Account: 0104317582200</strong>
+            <strong style="color: #1B4332;"><span id="outBankName">Standard Chartered Bank</span> <span id="outBankAccount">0104317582200</span></strong>
           </div>
         </div>
 
@@ -293,7 +309,6 @@ table.print-table th { background: #1B4332; color: #fff; }
 <button class="mobile-preview-btn q-btn" onclick="toggleMobilePreview()">👁️ Preview Quote</button>
 
 <!-- SITE FOOTER -->
-<!-- SITE FOOTER -->
 <footer style="position: relative; overflow: hidden; padding: 80px 0 30px; color: #fff; margin-top: 4rem;">
   <video autoplay loop muted playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translateX(-50%) translateY(-50%); object-fit: cover; z-index: 0; opacity: 0.5;">
     <source src="../assets/video/6015791_Business_Office_3840x2160.mp4" type="video/mp4">
@@ -306,7 +321,10 @@ table.print-table th { background: #1B4332; color: #fff; }
       <div>
         <h3 style="color: var(--color-gold, #C5A059); margin-bottom: 1rem; font-size: 1.5rem;">LINAKA INNOVATIONS</h3>
         <p style="font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
-          Custom web & software solutions.<br>Rooted in Zambia. Built for the world.
+          <strong>LINAKA INNOVATIONS</strong> (trading as Denfas Simfukwe)<br>
+          TPIN: 2002984908<br>
+          Custom web & software solutions.<br>
+          Rooted in Zambia. Built for the world.
         </p>
         <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
           <a href="https://wa.me/260979400243" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; transition: all 0.3s; color: #fff; text-decoration: none;" onmouseover="this.style.background='var(--color-gold)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">💬</a>
@@ -336,7 +354,7 @@ table.print-table th { background: #1B4332; color: #fff; }
     </div>
     
     <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; font-size: 0.95rem; color: rgba(255,255,255,0.7);">
-      <p>&copy; 2026 LINAKA INNOVATIONS. All Rights Reserved.</p>
+      <p>&copy; 2025 LINAKA INNOVATIONS. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
@@ -435,6 +453,9 @@ function saveAndPreview() {
     paymentTerms: document.getElementById("inPaymentTerms").value,
     description: document.getElementById("inDescription").value,
     discount: document.getElementById("inDiscount").value,
+    currency: document.getElementById("inCurrency").value,
+    bankName: document.getElementById("inBankName").value,
+    bankAccount: document.getElementById("inBankAccount").value,
     items: items,
     logo: uploadedLogoDataUrl
   };
@@ -456,6 +477,9 @@ function restoreSession() {
       document.getElementById("inPaymentTerms").value = data.paymentTerms || "";
       document.getElementById("inDescription").value = data.description || "";
       document.getElementById("inDiscount").value = data.discount || 0;
+      document.getElementById("inCurrency").value = data.currency || 'ZMW';
+      document.getElementById("inBankName").value = data.bankName || 'Standard Chartered Bank';
+      document.getElementById("inBankAccount").value = data.bankAccount || '0104317582200';
       
       if (data.items && data.items.length > 0) {
         items = data.items;
@@ -568,6 +592,8 @@ function updatePreview() {
   document.getElementById("outDescriptionBlock").style.display = desc ? "block" : "none";
   document.getElementById("outDateIssued").textContent = document.getElementById("inDateIssued").value;
   document.getElementById("outValidUntil").textContent = document.getElementById("inValidUntil").value;
+  document.getElementById("outBankName").textContent = document.getElementById("inBankName").value || "Standard Chartered Bank";
+  document.getElementById("outBankAccount").textContent = document.getElementById("inBankAccount").value || "0104317582200";
 
   const sigImg = document.getElementById("outSignatureImg");
   const sigTxt = document.getElementById("outSignatureTxt");
@@ -622,7 +648,8 @@ function updatePreview() {
 }
 
 function formatMoney(num) {
-  return "ZMW " + num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  const cur = document.getElementById("inCurrency").value || "ZMW";
+  return cur + " " + num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
 function toggleMobilePreview() {
@@ -656,11 +683,15 @@ function downloadNativePDF() {
   doc.setTextColor(...charcoal);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text("Call: 0953526534", 70, 30);
-  doc.text("WhatsApp: 0979400243", 70, 35);
-  doc.text("Email: linakainnovations@gmail.com", 70, 40);
+  doc.text("(trading as Denfas Simfukwe)", 70, 29);
+  doc.text("TPIN: 2002984908", 70, 34);
+  doc.text("Call: 0953526534", 70, 39);
+  doc.text("WhatsApp: 0979400243", 70, 44);
+  doc.text("Email: linakainnovations@gmail.com", 70, 49);
   doc.setFont("helvetica", "bold");
-  doc.text("Bank Account: 0104317582200", 70, 45);
+  const bName = document.getElementById("inBankName").value || "Standard Chartered Bank";
+  const bAcc = document.getElementById("inBankAccount").value || "0104317582200";
+  doc.text(`${bName} ${bAcc}`, 70, 54);
 
   doc.setTextColor(...gold);
   doc.setFontSize(24);
@@ -673,20 +704,20 @@ function downloadNativePDF() {
   doc.text(`Valid Until: ${document.getElementById("inValidUntil").value}`, 155, 40);
 
   doc.setDrawColor(220);
-  doc.line(14, 55, 196, 55);
+  doc.line(14, 62, 196, 62);
 
   doc.setTextColor(...green);
   doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
-  doc.text("Quote To:", 14, 65);
+  doc.text("Quote To:", 14, 72);
   
   doc.setTextColor(...charcoal);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text(document.getElementById("inClientName").value, 14, 71);
-  doc.text(document.getElementById("inClientAddress").value, 14, 76);
-  doc.text(document.getElementById("inClientPhone").value, 14, 81);
-  doc.text(document.getElementById("inClientEmail").value, 14, 86);
+  doc.text(document.getElementById("inClientName").value, 14, 78);
+  doc.text(document.getElementById("inClientAddress").value, 14, 83);
+  doc.text(document.getElementById("inClientPhone").value, 14, 88);
+  doc.text(document.getElementById("inClientEmail").value, 14, 93);
 
   const tableData = items.map(i => [
     i.desc, 
@@ -699,16 +730,16 @@ function downloadNativePDF() {
   const descText = document.getElementById("inDescription").value;
   if (descText && descText.trim()) {
     doc.setFillColor(248, 249, 250);
-    doc.rect(14, 91, 182, 1, 'F'); // separator
+    doc.rect(14, 98, 182, 1, 'F'); // separator
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...green);
-    doc.text("Project Description / Scope of Work:", 14, 97);
+    doc.text("Project Description / Scope of Work:", 14, 104);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...charcoal);
     const splitDesc = doc.splitTextToSize(descText, 182);
-    doc.text(splitDesc, 14, 103);
-    const descEndY = 103 + (splitDesc.length * 5) + 5;
+    doc.text(splitDesc, 14, 110);
+    const descEndY = 110 + (splitDesc.length * 5) + 5;
     doc.autoTable({
       startY: descEndY,
       head: [['Description', 'Qty', 'Unit Price', 'Total']],
@@ -726,7 +757,7 @@ function downloadNativePDF() {
     });
   } else {
     doc.autoTable({
-    startY: 95,
+    startY: 102,
     head: [['Description', 'Qty', 'Unit Price', 'Total']],
     body: tableData,
     theme: 'plain',
