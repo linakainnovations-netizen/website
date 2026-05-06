@@ -120,7 +120,7 @@ table.print-table th { background: #1B4332; color: #fff; }
 <!-- Authentication Screen -->
 <div id="authScreen">
   <div style="text-align: center; padding: 3rem; background: rgba(0,0,0,0.2); border-radius: 8px;">
-    <h2>LINAKA INNOVATIONS-</h2>
+    <h2>LINAKA INNOVATIONS</h2>
     <p style="margin-bottom: 1rem;">Enterprise Quote Tool</p>
     <div id="authError" style="color: #ffcccc; margin-top: 1rem; font-weight: bold; display: none;"></div>
     <div id="authLoader" style="display: none; margin-top: 1rem;">Unlocking...</div>
@@ -251,7 +251,7 @@ table.print-table th { background: #1B4332; color: #fff; }
           </div>
           <div class="print-company">
             <strong style="font-size: 1.4rem; color: #1B4332;">LINAKA INNOVATIONS</strong><br>
-            <span style="font-size: 0.8rem;">(trading as Denfas Simfukwe)</span><br><br>
+            
             TPIN: 2002984908<br>
             Call: 0953526534<br>
             WhatsApp: 0979400243<br>
@@ -340,7 +340,7 @@ table.print-table th { background: #1B4332; color: #fff; }
       <div>
         <h3 style="color: var(--color-gold, #C5A059); margin-bottom: 1rem; font-size: 1.5rem;">LINAKA INNOVATIONS</h3>
         <p style="font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
-          <strong>LINAKA INNOVATIONS</strong> (trading as Denfas Simfukwe)<br>
+          <strong>LINAKA INNOVATIONS</strong><br>
           TPIN: 2002984908<br>
           Custom web & software solutions.<br>
           Rooted in Zambia. Built for the world.
@@ -703,25 +703,24 @@ function downloadNativePDF() {
   doc.setTextColor(...green);
   doc.setFontSize(22);
   doc.setFont("helvetica", "bold");
-  doc.text("LINAKA INNOVATIONS-", 70, 24);
+  doc.text("LINAKA INNOVATIONS", 70, 24);
   
   doc.setTextColor(...charcoal);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text("(trading as Denfas Simfukwe)", 70, 29);
-  doc.text("TPIN: 2002984908", 70, 34);
-  doc.text("Call: 0953526534", 70, 39);
-  doc.text("WhatsApp: 0979400243", 70, 44);
-  doc.text("Email: linakainnovations@gmail.com", 70, 49);
+    doc.text("TPIN: 2002984908", 70, 29);
+  doc.text("Call: 0953526534", 70, 34);
+  doc.text("WhatsApp: 0979400243", 70, 39);
+  doc.text("Email: linakainnovations@gmail.com", 70, 44);
   doc.setFont("helvetica", "bold");
   const bName = document.getElementById("inBankName").value || "Standard Chartered Bank";
   const accName = document.getElementById("inAccountName").value || "DENFAS SIMFUKWE";
   const bAcc = document.getElementById("inBankAccount").value || "0104317582200";
   const bSwift = document.getElementById("inSwiftCode").value || "SCBLZMLXXXX";
-  doc.text(`Bank: ${bName}`, 70, 54);
-  doc.text(`Acc Name: ${accName}`, 70, 59);
-  doc.text(`Acc No: ${bAcc}`, 70, 64);
-  doc.text(`SWIFT: ${bSwift}`, 70, 69);
+  doc.text(`Bank: ${bName}`, 70, 49);
+  doc.text(`Acc Name: ${accName}`, 70, 54);
+  doc.text(`Acc No: ${bAcc}`, 70, 59);
+  doc.text(`SWIFT: ${bSwift}`, 70, 64);
 
   doc.setTextColor(...gold);
   doc.setFontSize(24);
