@@ -200,9 +200,13 @@ table.print-table th { background: #1B4332; color: #fff; }
       <textarea id="inPaymentTerms" rows="3" style="width: 100%; padding: 0.65rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1rem;" placeholder="E.g. 50% upfront, 50% upon completion" oninput="saveAndPreview()"></textarea>
 
       <label>Bank Name</label>
-      <input type="text" id="inBankName" placeholder="E.g. FNB Zambia" oninput="saveAndPreview()">
+      <input type="text" id="inBankName" placeholder="E.g. Standard Chartered Bank" oninput="saveAndPreview()">
+      <label>Account Name</label>
+      <input type="text" id="inAccountName" placeholder="E.g. DENFAS SIMFUKWE" oninput="saveAndPreview()">
       <label>Bank Account Number</label>
       <input type="text" id="inBankAccount" placeholder="E.g. 0104317582200" oninput="saveAndPreview()">
+      <label>SWIFT Code</label>
+      <input type="text" id="inSwiftCode" placeholder="E.g. SCBLZMLXXXX" oninput="saveAndPreview()">
 
       <label style="margin-top: 0.5rem;">Project Description / Scope of Work</label>
       <textarea id="inDescription" rows="4" style="width: 100%; padding: 0.65rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1rem;" placeholder="Describe what is included in this quote — e.g. Website with 5 pages, admin dashboard, mobile responsive, 3 months support..." oninput="saveAndPreview()"></textarea>
@@ -252,7 +256,12 @@ table.print-table th { background: #1B4332; color: #fff; }
             Call: 0953526534<br>
             WhatsApp: 0979400243<br>
             Email: linakainnovations@gmail.com<br>
-            <strong style="color: #1B4332;"><span id="outBankName">Standard Chartered Bank</span> <span id="outBankAccount">0104317582200</span></strong>
+            <strong style="color: #1B4332;">
+              Bank: <span id="outBankName">Standard Chartered Bank</span><br>
+              Acc Name: <span id="outAccountName">DENFAS SIMFUKWE</span><br>
+              Acc No: <span id="outBankAccount">0104317582200</span><br>
+              SWIFT: <span id="outSwiftCode">SCBLZMLXXXX</span>
+            </strong>
           </div>
         </div>
 
@@ -465,7 +474,9 @@ function saveAndPreview() {
     discount: document.getElementById("inDiscount").value,
     currency: document.getElementById("inCurrency").value,
     bankName: document.getElementById("inBankName").value,
+    accountName: document.getElementById("inAccountName").value,
     bankAccount: document.getElementById("inBankAccount").value,
+    swiftCode: document.getElementById("inSwiftCode").value,
     items: items,
     logo: uploadedLogoDataUrl
   };
@@ -489,7 +500,9 @@ function restoreSession() {
       document.getElementById("inDiscount").value = data.discount || 0;
       document.getElementById("inCurrency").value = data.currency || 'ZMW';
       document.getElementById("inBankName").value = data.bankName || 'Standard Chartered Bank';
+      document.getElementById("inAccountName").value = data.accountName || 'DENFAS SIMFUKWE';
       document.getElementById("inBankAccount").value = data.bankAccount || '0104317582200';
+      document.getElementById("inSwiftCode").value = data.swiftCode || 'SCBLZMLXXXX';
       
       if (data.items && data.items.length > 0) {
         items = data.items;
@@ -603,7 +616,9 @@ function updatePreview() {
   document.getElementById("outDateIssued").textContent = document.getElementById("inDateIssued").value;
   document.getElementById("outValidUntil").textContent = document.getElementById("inValidUntil").value;
   document.getElementById("outBankName").textContent = document.getElementById("inBankName").value || "Standard Chartered Bank";
+  document.getElementById("outAccountName").textContent = document.getElementById("inAccountName").value || "DENFAS SIMFUKWE";
   document.getElementById("outBankAccount").textContent = document.getElementById("inBankAccount").value || "0104317582200";
+  document.getElementById("outSwiftCode").textContent = document.getElementById("inSwiftCode").value || "SCBLZMLXXXX";
 
   const sigImg = document.getElementById("outSignatureImg");
   const sigTxt = document.getElementById("outSignatureTxt");
@@ -700,8 +715,13 @@ function downloadNativePDF() {
   doc.text("Email: linakainnovations@gmail.com", 70, 49);
   doc.setFont("helvetica", "bold");
   const bName = document.getElementById("inBankName").value || "Standard Chartered Bank";
+  const accName = document.getElementById("inAccountName").value || "DENFAS SIMFUKWE";
   const bAcc = document.getElementById("inBankAccount").value || "0104317582200";
-  doc.text(`${bName} ${bAcc}`, 70, 54);
+  const bSwift = document.getElementById("inSwiftCode").value || "SCBLZMLXXXX";
+  doc.text(`Bank: ${bName}`, 70, 54);
+  doc.text(`Acc Name: ${accName}`, 70, 59);
+  doc.text(`Acc No: ${bAcc}`, 70, 64);
+  doc.text(`SWIFT: ${bSwift}`, 70, 69);
 
   doc.setTextColor(...gold);
   doc.setFontSize(24);
@@ -714,20 +734,20 @@ function downloadNativePDF() {
   doc.text(`Valid Until: ${document.getElementById("inValidUntil").value}`, 155, 40);
 
   doc.setDrawColor(220);
-  doc.line(14, 62, 196, 62);
+  doc.line(14, 77, 196, 77);
 
   doc.setTextColor(...green);
   doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
-  doc.text("Quote To:", 14, 72);
+  doc.text("Quote To:", 14, 87);
   
   doc.setTextColor(...charcoal);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text(document.getElementById("inClientName").value, 14, 78);
-  doc.text(document.getElementById("inClientAddress").value, 14, 83);
-  doc.text(document.getElementById("inClientPhone").value, 14, 88);
-  doc.text(document.getElementById("inClientEmail").value, 14, 93);
+  doc.text(document.getElementById("inClientName").value, 14, 93);
+  doc.text(document.getElementById("inClientAddress").value, 14, 98);
+  doc.text(document.getElementById("inClientPhone").value, 14, 103);
+  doc.text(document.getElementById("inClientEmail").value, 14, 108);
 
   const tableData = items.map(i => [
     i.desc, 
@@ -740,16 +760,16 @@ function downloadNativePDF() {
   const descText = document.getElementById("inDescription").value;
   if (descText && descText.trim()) {
     doc.setFillColor(248, 249, 250);
-    doc.rect(14, 98, 182, 1, 'F'); // separator
+    doc.rect(14, 113, 182, 1, 'F'); // separator
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...green);
-    doc.text("Project Description / Scope of Work:", 14, 104);
+    doc.text("Project Description / Scope of Work:", 14, 119);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...charcoal);
     const splitDesc = doc.splitTextToSize(descText, 182);
-    doc.text(splitDesc, 14, 110);
-    const descEndY = 110 + (splitDesc.length * 5) + 5;
+    doc.text(splitDesc, 14, 125);
+    const descEndY = 125 + (splitDesc.length * 5) + 5;
     doc.autoTable({
       startY: descEndY,
       head: [['Description', 'Qty', 'Unit Price', 'Total']],
@@ -767,7 +787,7 @@ function downloadNativePDF() {
     });
   } else {
     doc.autoTable({
-    startY: 102,
+    startY: 117,
     head: [['Description', 'Qty', 'Unit Price', 'Total']],
     body: tableData,
     theme: 'plain',
